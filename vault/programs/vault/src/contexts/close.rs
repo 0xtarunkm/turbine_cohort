@@ -1,5 +1,6 @@
-use anchor_lang::{prelude::*, system_program::{transfer, Transfer}};
-use crate::state::VaultState;
+use anchor_lang::{prelude::*, system_program::{Transfer, transfer}};
+
+use crate::states::VaultState;
 
 #[derive(Accounts)]
 pub struct Close<'info> {
@@ -8,17 +9,17 @@ pub struct Close<'info> {
     #[account(
         mut,
         seeds = [b"vault", state.key().as_ref()],
-        bump = state.vault_bump
+        bump = state.vault_bump,
     )]
     pub vault: SystemAccount<'info>,
     #[account(
         mut,
-        close = signer,
         seeds = [b"state", signer.key().as_ref()],
-        bump = state.state_bump
+        bump = state.state_bump,
+        close = signer,
     )]
     pub state: Account<'info, VaultState>,
-    pub system_program: Program<'info, System>
+    pub system_program: Program<'info, System>,
 }
 
 impl<'info> Close<'info> {
@@ -27,19 +28,19 @@ impl<'info> Close<'info> {
 
         let cpi_accounts = Transfer {
             from: self.vault.to_account_info(),
-            to: self.signer.to_account_info()
+            to: self.signer.to_account_info(),
         };
 
         let seeds = &[
             b"vault",
             self.state.to_account_info().key.as_ref(),
-            &[self.state.vault_bump]
-        ]; 
+            &[self.state.vault_bump],
+        ];
 
         let signer_seeds = &[&seeds[..]];
 
         let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, signer_seeds);
-        
-        transfer(cpi_ctx, self.vault.get_lamports())
+
+        transfer(cpi_ctx, self.vault.lamports())
     }
 }

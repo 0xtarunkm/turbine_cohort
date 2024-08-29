@@ -1,11 +1,11 @@
 use anchor_lang::prelude::*;
 
 pub mod contexts;
-use contexts::*;
+pub use contexts::*;
 
-pub mod state;
+pub mod states;
 
-declare_id!("GZaT6yDCxRqypRfY5Ndxfz7kCcZdeGCk1tUfic6vxiHu");
+declare_id!("5riLpUJoBjEzJ4oq2S9LoEGS9aF5MAqKDcPLPmtASGgp");
 
 #[program]
 pub mod vault {
@@ -15,13 +15,16 @@ pub mod vault {
         ctx.accounts.initialize(&ctx.bumps)
     }
 
-    pub fn payments(ctx: Context<Payments>, amount: u64) -> Result<()> {
-        ctx.accounts.deposit(amount)?;
+    pub fn deposit(ctx: Context<Payments>, amount: u64) -> Result<()> {
+        ctx.accounts.deposit(amount)
+    }
+
+    pub fn withdraw(ctx: Context<Payments>, amount: u64) -> Result<()> {
         ctx.accounts.withdraw(amount)
     }
 
     pub fn close(ctx: Context<Close>) -> Result<()> {
         ctx.accounts.close()
     }
-} 
+}
 

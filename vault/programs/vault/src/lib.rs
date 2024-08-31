@@ -5,7 +5,7 @@ pub use contexts::*;
 
 pub mod states;
 
-declare_id!("5riLpUJoBjEzJ4oq2S9LoEGS9aF5MAqKDcPLPmtASGgp");
+declare_id!("2kwiEcnKF3oCGCtX8oSHmasdvFhvZo5c6nZAYJKK9xWa");
 
 #[program]
 pub mod vault {

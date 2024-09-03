@@ -7,9 +7,10 @@ pub struct StakeConfig {
     pub freeze_period: u32,
     pub rewards_bump: u8,
     pub seed: u64,
-    pub bump: u8
+    pub bump: u8,
 }
 
 impl Space for StakeConfig {
     const INIT_SPACE: usize = 8 + 1 + 1 + 4 + 1 + 8 + 1;
 }
+

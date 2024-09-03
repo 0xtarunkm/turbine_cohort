@@ -13,7 +13,6 @@ pub struct Stake<'info> {
         mut,
         associated_token::mint = mint,
         associated_token::authority = signer,
-        associated_token::token_program = token_program
     )]
     mint_ata: Account<'info, TokenAccount>,
     #[account(

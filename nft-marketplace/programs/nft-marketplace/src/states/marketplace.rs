@@ -11,4 +11,3 @@ pub struct Marketplace {
     #[max_len(32)]
     pub name: String,
 }
-

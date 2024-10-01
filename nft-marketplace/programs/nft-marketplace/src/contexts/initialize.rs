@@ -25,6 +25,7 @@ pub struct Initialize<'info> {
         mint::authority = marketplace
     )]
     rewards_mint: InterfaceAccount<'info, Mint>,
+    // doubt
     #[account(
         seeds = [b"treasury", marketplace.key().as_ref()],
         bump,

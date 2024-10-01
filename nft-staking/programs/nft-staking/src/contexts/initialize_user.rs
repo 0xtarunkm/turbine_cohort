@@ -1,5 +1,4 @@
 use anchor_lang::prelude::*;
-
 use crate::states::UserAccount;
 
 #[derive(Accounts)]
@@ -11,7 +10,7 @@ pub struct InitializeUser<'info> {
         payer = user,
         seeds = [b"user", user.key().as_ref()],
         bump,
-        space = UserAccount::INIT_SPACE
+        space = 8 + UserAccount::INIT_SPACE
     )]
     user_account: Account<'info, UserAccount>,
     system_program: Program<'info, System>

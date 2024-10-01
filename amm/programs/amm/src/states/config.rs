@@ -3,11 +3,9 @@ use anchor_lang::prelude::*;
 #[account]
 #[derive(InitSpace)]
 pub struct Config {
-    pub authority: Option<Pubkey>,
-    pub fee: u16,
-    pub mint_x: Pubkey,
-    pub mint_y: Pubkey,
-    pub seed: u64,
-    pub config_bump: u8,
-    pub auth_bump: u8,
+    seed: u64,
+    fees: u16,
+    mint_x: Pubkey,
+    mint_y: Pubkey,
+    bump: u8,
 }

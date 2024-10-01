@@ -6,7 +6,7 @@ mod error;
 
 use contexts::*;
 
-declare_id!("9FdZSLixE2hinhcCnWjQ8nWWv6sr1e37AHRpb1qgE7ns");
+declare_id!("8uWdqibpEv7ooTPTzXHUncCbY6JGSff9kMK26YGo26GQ");
 
 #[program]
 pub mod nft_marketplace {

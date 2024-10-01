@@ -5,14 +5,14 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-vault = "2kwiEcnKF3oCGCtX8oSHmasdvFhvZo5c6nZAYJKK9xWa"
+vault = "HSovqiQVgGUKJyRErY6GPKjh1qHjVQGvaPYcaRNPKrMy"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "Devnet"
-wallet = "~/.config/solana/id2.json"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

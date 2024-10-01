@@ -1,10 +1,14 @@
-"use client"
+'use client';
 
-import { useAnchorWallet, useConnection, useWallet } from "@solana/wallet-adapter-react"
-import { program } from "../../anchor/setup";
-import { useState } from "react";
-import { LAMPORTS_PER_SOL, PublicKey, SystemProgram } from "@solana/web3.js";
-import { BN } from "@coral-xyz/anchor";
+import {
+  useAnchorWallet,
+  useConnection,
+  useWallet,
+} from '@solana/wallet-adapter-react';
+import { program } from '../../anchor/setup';
+import { useState } from 'react';
+import { LAMPORTS_PER_SOL, PublicKey, SystemProgram } from '@solana/web3.js';
+import { BN } from '@coral-xyz/anchor';
 
 export const Deposit = () => {
   const { sendTransaction } = useWallet();
@@ -25,21 +29,15 @@ export const Deposit = () => {
         })
         .transaction();
 
-      const initTxSig = await sendTransaction(
-        initTx,
-        connection
-      );
+      const initTxSig = await sendTransaction(initTx, connection);
 
-      console.log(`initTx -> ${initTxSig}`)
-
-
+      console.log(`initTx -> ${initTxSig}`);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const onClick = async () => {
-
     if (!anchor?.publicKey) return;
 
     try {
@@ -50,23 +48,23 @@ export const Deposit = () => {
         })
         .transaction();
 
-      const depositTxSig = await sendTransaction(
-        depositTx,
-        connection
-      );
+      const depositTxSig = await sendTransaction(depositTx, connection);
 
       console.log(`depositTx -> ${depositTxSig}`);
-
     } catch (error) {
-      console.log("transaction failed")
-      console.log(error)
+      console.log('transaction failed');
+      console.log(error);
     }
   };
   return (
     <div>
-      <input type="number" value={amount} onChange={(e) => setAmount(parseInt(e.target.value))} />
+      <input
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(parseInt(e.target.value))}
+      />
       <button onClick={init}>init</button>
       <button onClick={onClick}>Deposit</button>
     </div>
-  )
-}
+  );
+};
